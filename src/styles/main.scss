@@ -2,11 +2,27 @@ body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: $secondary-color;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
 }
 
 * {
     box-sizing: border-box;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.content-body {
+    min-height: 100vh;
+    padding-bottom: 1rem;
+    @include theme() {
+        background-color: theme-get('secondary-color');
+    }
 }
 
 .header {
@@ -14,13 +30,18 @@ body, html {
     height: 80px;
     display: flex;
     align-items: center;
-    background-color: $primary-color;
+    @include theme() {
+        background-color: theme-get('primary-color');
+    }
     &_content {
         width: 100%;
         display: flex;
         padding: 0 3rem;
         align-items: center;
         justify-content: space-between;
+        @include media-breakpoint-down (sm) {
+            padding: 0 10px;
+        }
     }
 }
 
@@ -28,9 +49,22 @@ body, html {
     &_grid {
         display: grid;
         grid-gap: 50px;
-        margin-top: 4rem;
+        margin-top: 2rem;
         justify-content: center;
         grid-template-columns: repeat(auto-fill, 265px);
+    }
+}
+
+.bordered {
+    @include theme() {
+        box-shadow: 0px 0px 10px 5px theme-get('shadow-color'), 
+        0px 0px 10px 5px theme-get('shadow-color');
+    }
+    &--smaller {
+        @include theme() {
+            box-shadow: 0 0 5px theme-get('shadow-color'),
+            0 0 5px theme-get('shadow-color') !important;
+        }
     }
 }
 
@@ -38,8 +72,10 @@ body, html {
     width: 265px;
     height: 355px;
     border-radius: 5px;
-    outline: 10px solid rgba($primary-color, 0.2);
-    background-color: $primary-color;
+    // background-color: $primary-color;
+    @include theme() {
+        background-color: theme-get('primary-color');
+    }
     &_img {
         width: 100%;
         height: 160px;
@@ -52,6 +88,174 @@ body, html {
     }
 }
 
+.box {
+    padding: 5px 1rem;
+    border-radius: 5px;
+    // background-color: $primary-color;
+    @include theme() {
+        color: theme-get('text-color');
+        background-color: theme-get('primary-color');
+    }
+}
+
+.details {
+    &_back {
+        margin-top: 3rem;
+        align-items: center;
+        display: inline-flex;
+        padding: 5px 1.5rem 5px 1rem;
+        span {
+            margin-left: 5px;
+        }
+    }
+    &_content {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+        // color: $text-color;
+        @include theme() {
+            color: theme-get('text-color');
+        }
+        justify-content: center;
+        & > :nth-child(2) {
+            flex-grow: 1;
+            padding-left: 7rem;
+            @include media-breakpoint-down (md) {
+                padding-left: 0rem;
+            }
+        }
+    }
+    &_flag {
+        max-width: 560px;
+        margin-bottom: 10px;
+        background-size: cover;
+        width: 560px; height: 400px;
+        background-repeat: no-repeat;
+        @include media-breakpoint-down (md) {
+            width: 100%;
+            height: 300px;
+            background-position: center center;
+        }
+    }
+    &_info {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        & > :nth-child(1) {
+            width: 50%;
+            @include media-breakpoint-down (sm) {
+                width: 100%;
+            }
+        }
+        & > :nth-child(2) {
+            width: 50%;
+            @include media-breakpoint-down (sm) {
+                width: 100%;
+            }
+
+        }
+        &_item {
+            margin-top: 10px;
+        }
+    }
+    &_borders {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+        white-space: nowrap;
+    }
+    &_boxes {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -20px;
+        margin-bottom: 5rem;
+        @include media-breakpoint-down (sm) {
+            margin-top: 0px;
+        }
+        & > * {
+            height: 30px;
+            margin-top: 15px;
+            margin-left: 1rem;
+            white-space: nowrap;
+            @include media-breakpoint-down (sm) {
+                margin-left: 0rem;
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
 .container {
-    max-width: 1800px;
+    max-width: 1600px;
+}
+
+.filters {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 2rem;
+    justify-content: space-between;
+    @include media-breakpoint-down (md) {
+        & > :nth-child(2) {
+            margin-top: 2rem;
+        }
+    }
+}
+
+.el-scrollbar, .el-select-dropdown__wrap, .el-scrollbar__view, .el-select-dropdown__item {
+    // background-color: $primary-color !important;
+    @include theme() {
+        background-color: theme-get('primary-color') !important;
+    }
+    border: none !important;
+    outline: none !important;
+}
+
+.element-input {
+    input {
+        // color: white !important;
+        border-color: transparent !important;
+        // background-color: $primary-color !important;
+        @include theme() {
+            color: theme-get('contrast-color') !important;
+            background-color: theme-get('primary-color') !important;
+        }
+    }
+}
+
+.filter {
+    &_input {
+        input {
+            padding-left: 40px !important;
+        }
+        width: 500px !important; height: 30px;
+    }
+    &_select {
+        width: 200px; height: 30px;
+    }
+}
+
+.el-select-dropdown {
+    border: none !important;
+    margin-top: 7px !important;
+    // background-color: $primary-color !important; 
+    @include theme() {
+        background-color: theme-get('primary-color') !important;
+    }
+    .hover {
+        @include theme() {
+            background-color: theme-get('secondary-color') !important;
+        }
+    }
+}
+
+.el-select-dropdown__item {
+    // color: white !important;
+    @include theme() {
+        color: theme-get('contrast-color') !important;
+    }
+}
+
+.popper__arrow {
+    display: none !important;
 }

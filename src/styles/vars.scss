@@ -1,5 +1,37 @@
 $primary-color: #2b3743;
 $secondary-color: #212e37;
+$text-color: #b4c0cc;
 
 $primary-color-light: #FFFFFF;
 $secondary-color-light: #fafafa;
+
+$themes: (
+  darkTheme: (
+    'primary-color': #2b3743,
+    'secondary-color': #212e37,
+    'text-color': #b4c0cc,
+    'shadow-color': #1b2831,
+    'contrast-color': white
+  ),
+  lightTheme: (
+    'primary-color': #FFFFFF,
+    'secondary-color': #fafafa,
+    'text-color': #212e37,
+    'shadow-color': #e4e4e4,
+    'contrast-color': black
+  )
+);
+
+@mixin theme() {
+  @each $theme, $map in $themes {
+    $theme-map: $map !global;
+    .#{$theme} & {
+      @content;
+    }
+  }
+  $theme-map: null !global;
+}
+
+@function theme-get($key) {
+  @return map-get($theme-map, $key);
+}

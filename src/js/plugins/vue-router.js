@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 
 const routes = [
     { path: '/', component: index },
-    { path: '/details', component: details }
+    { path: '/details/:name', component: details }
   ]
   
 export default new VueRouter({

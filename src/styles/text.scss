@@ -1,14 +1,20 @@
 .text-header {
-    color: white;
+    @include theme() {
+        color: theme-get('contrast-color');
+    }
 }
 
 .text-body {
-    color: white;
+    @include theme() {
+        color: theme-get('text-color');
+    }
     &--bold {
         
     }
 }
 
 .text-elegant {
-    color: white;
+    @include theme() {
+        color: theme-get('contrast-color');
+    }
 }
