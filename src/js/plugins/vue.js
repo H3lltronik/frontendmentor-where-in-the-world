@@ -4,7 +4,6 @@ import store from './vuex'
 import router from './vue-router'
 
 import { Select, Option, Input, Icon, Loading } from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 
 import lang from 'element-ui/lib/locale/lang/es'
 import locale from 'element-ui/lib/locale'
