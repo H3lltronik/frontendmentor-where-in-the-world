@@ -26,7 +26,9 @@
                 <div class="search_icon">
                     <Icon path={mdiMagnify}></Icon>
                 </div>
-                <input class="search" type="text" placeholder="Search for a country...">
+                <input class="search" type="text" placeholder="Search for a country..." 
+                on:input={e => nameFilter.update (val => val = e.target.value)}
+                >
             </div>
         </div>
         
@@ -40,6 +42,7 @@
     import Icon from 'mdi-svelte';
     import { mdiMagnify, mdiWeatherNight  } from '@mdi/js';
     import FilterSelect from "./filterSelect.svelte";
+    import {nameFilter} from '../store'
 
 </script>
 

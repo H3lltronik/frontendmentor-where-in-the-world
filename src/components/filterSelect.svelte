@@ -1,21 +1,26 @@
 <div class="position-relative">
     <div class="select" bind:this={select}>
-        <span>Filter by Region</span>
+        {#if $regionFilter}
+            <span>{$regionFilter}</span> 
+        {:else}
+            <span>Filter by Region</span>
+        {/if}
     
         <Icon path={mdiChevronDown }></Icon>
     </div>
     
     <div class="select_items mt-2" bind:this={popover}>
-        <div class="select_item">Africa</div>
-        <div class="select_item">Algo</div>
-        <div class="select_item">Mas</div>
+        {#each regions as region}
+            <div class="select_item" on:click={() => selectRegionFilter (region)}>{region}</div>
+        {/each}
     </div>
 </div>
 
-<script>
+<script lang="ts">
     import Icon from 'mdi-svelte';
     import { onMount } from 'svelte';
     import { mdiChevronDown } from '@mdi/js';
+    import {regions, regionFilter} from '../store'
     import tippy from 'tippy.js';
 
     let popover = null;
@@ -25,11 +30,14 @@
         tippy (select, {
             content: popover,
             placement: 'bottom',
-            arrow:'true',
     		trigger:'click',
             interactive: true
         });
     });
+
+    const selectRegionFilter = (regionFiler: string) => {
+        regionFilter.update(n => n = regionFiler)
+    }
 
 
 </script>
