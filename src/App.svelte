@@ -1,18 +1,14 @@
-<script lang="ts">
-  import Icon from 'mdi-svelte';
-  import { mdiCardsSpade } from '@mdi/js';
-  import { Router, Route, Link } from "svelte-navigator";
-
-  import Header from './components/header.svelte';
-  import Body from './components/body.svelte';
-</script>
-
-<div class="col-12">
-  <div class="row">
+<div class="col-12 h-100">
+  <div class="row h-100 app-row">
     <Header/>
     <Body/>
   </div>
 </div>
+
+<script lang="ts">
+  import Header from './components/header.svelte';
+  import Body from './components/body.svelte';
+</script>
 
 <style lang="scss" global>
   @import "../node_modules/bootstrap/scss/bootstrap";
@@ -36,8 +32,9 @@
   }
 
   body {
-      overflow-x: hidden;
-      background-color: var(--body-color);
+    overflow: hidden;
+    width: 100vw; height: 100vw;
+    background-color: var(--body-color);
   }
 
   .content-container {
@@ -45,6 +42,12 @@
   }
   .page-container {
       max-width: 1900px;
+  }
+
+  .app-row {
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
   }
 
   .elevation {
