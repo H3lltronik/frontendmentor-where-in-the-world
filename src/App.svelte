@@ -18,6 +18,8 @@
     --body-color: rgb(33, 46, 55);
     --text-color: #fff;
     --placeholder-color: rgba(255, 255, 255, 0.7);
+    --scroll-thumb-color: #2b3743;
+    --scroll-track-color: white;
   }
 
   :root[data-theme='light'] {
@@ -25,6 +27,8 @@
     --body-color: #fff;
     --text-color: #000;
     --placeholder-color: rgba(0,0,0, 0.6);
+    --scroll-thumb-color: black;
+    --scroll-track-color: gray;
   }
 
   :root {
@@ -67,5 +71,24 @@
 
   .cursor-pointer {
     cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      transition: background-color 0.3s ease-in-out;
+      background-color: var(--scroll-thumb-color);
+  }
+
+  ::-webkit-scrollbar-track {
+      transition: background-color 0.3s ease-in-out;
+      background-color: var(--scroll-track-color);
+  }
+
+  ::-webkit-scrollbar {
+      width: 20px;
   }
 </style>

@@ -19,6 +19,8 @@ export const regionFilter = writable<string>("All");
 
 export const currentTheme = writable<Theme|null>(null);
 
+export const loading = writable<boolean>(false)
+
 export const filteredCountries = derived(
     [countries, regionFilter, nameFilter], 
     ([$countries, $regionFilter, $nameFilter]) => {

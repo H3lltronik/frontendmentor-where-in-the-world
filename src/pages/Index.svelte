@@ -1,6 +1,6 @@
 <div class="page h-100 pb-5">
     <div class="row justify-content-between align-items-center px-5 pt-4 pt-lg-5">
-        <div class="col-auto">
+        <div class="col-12 col-sm-9 col-md-6 col-lg-5 col-xl-3">
             <div class="search_box elevation">
                 <div class="search_icon">
                     <Icon path={mdiMagnify}></Icon>
@@ -11,7 +11,7 @@
             </div>
         </div>
         
-        <div class="col-auto">
+        <div class="col-auto mt-5 mt-md-1 mt-lg-0">
             <FilterSelect></FilterSelect>
         </div>
     </div>
@@ -32,11 +32,11 @@
     import Icon from 'mdi-svelte';
     import { onMount } from 'svelte';
     import { mdiMagnify } from '@mdi/js';
-    import { filteredCountries } from "../store";
-    import {nameFilter, currentTheme} from '../store'
     import Country from '../components/country.svelte'  
-    import FilterSelect from "../components/filterSelect.svelte";
     import { switchTheme, themeIcon } from '../utils';
+    import FilterSelect from "../components/filterSelect.svelte";
+    import { filteredCountries, nameFilter, currentTheme } from "../store";
+
     let timeout = null;
     let icon = null;
 
@@ -54,9 +54,10 @@
 
 <style lang="scss">
     .search {
+        width: 100%;
         border-radius: 5px;
         padding-left: 60px;
-        width: 480px; height: 55px;
+        max-width: 480px; height: 55px;
         outline: none; border: none;
         background-color: var(--header-color);
         &::placeholder {
@@ -86,16 +87,5 @@
         flex: 1;
         overflow-y: auto;
         overflow-x: hidden;
-        &::-webkit-scrollbar-thumb {
-            background-color: var(--header-color);
-        }
-
-        &::-webkit-scrollbar-track {
-            background: white;
-        }
-
-        &::-webkit-scrollbar {
-            width: 20px;
-        }
     }
 </style>

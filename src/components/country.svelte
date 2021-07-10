@@ -1,5 +1,5 @@
 <div class="country elevation px-0 transform-transition">
-    <Link to={`/details/${urlName()}`}>
+    <Link to={`/details/${urlName()}`} >
         <div class="country_bg common-transition">
             <div class="country_flag">
                 <img class="img-fluid" src={country.flag} alt="">
@@ -38,7 +38,7 @@
 
 <style lang="scss">
     .country {
-        height: 330px;
+        min-height: 330px;
         max-width: 300px;
         &_bg {
             height: 100%;
