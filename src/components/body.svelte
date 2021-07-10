@@ -2,12 +2,18 @@
     <div class="row h-100">
         <div class="content-container container h-100" style="overflow-y: auto; overflow-x: hidden;">
             <Router>
-                <Route path="/">
-                    <Index/>
-                </Route>
-                <Route path="/details/:name" let:params>
-                    <Details name={params.name}/>
-                </Route>
+                <ContainerTransition>
+                    <Route path="/">
+                        <RouteTransition direction="forward">
+                            <Index/>
+                        </RouteTransition>
+                    </Route>
+                    <Route path="/details/:name" let:params>
+                        <RouteTransition direction="backward">
+                            <Details name={params.name}/>
+                        </RouteTransition>
+                    </Route>
+                </ContainerTransition>
             </Router>
         </div>
     </div>
@@ -20,11 +26,13 @@
 </div>
 
 <script lang="ts">
+    import {loading} from '../store'
     import Index from '../pages/Index.svelte'
     import Details from '../pages/Details.svelte'
     import { BarLoader } from 'svelte-loading-spinners'
     import { Router, Route } from "svelte-navigator";
-    import {loading} from '../store'
+    import RouteTransition from './transition/RouteTransition.svelte'
+    import ContainerTransition from './transition/TransitionContainer.svelte'
 </script>
 
 <style lang="scss">
