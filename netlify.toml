@@ -1,4 +1,4 @@
 [build]
-    command = "npm run build"
+    command = "npx envinfo --system --npmPackages vite,svelte,svelte-hmr,@sveltejs/vite-plugin-svelte --binaries --browsers"
     public = "dist/"
     functions = "functions/"
