@@ -1,4 +1,4 @@
-<div class="page h-100">
+<div class="page h-100 pb-5">
     <div class="row justify-content-between align-items-center px-5 pt-4 pt-lg-5">
         <div class="col-auto">
             <div class="search_box elevation">
@@ -23,6 +23,7 @@
                     <Country {country}></Country>
                 </div>
             </div> 
+            
         {/each}
     </div>
 </div>

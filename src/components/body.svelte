@@ -1,12 +1,16 @@
-<div class="body content-container container">
-    <Router>
-        <Route path="/">
-            <Index/>
-        </Route>
-        <Route path="/details/:slug">
-            <Details/>
-        </Route>
-    </Router>
+<div class="col-12 body">
+    <div class="row h-100">
+        <div class="content-container container h-100">
+            <Router>
+                <Route path="/">
+                    <Index/>
+                </Route>
+                <Route path="/details/:slug">
+                    <Details/>
+                </Route>
+            </Router>
+        </div>
+    </div>
 </div>
 
 <script lang="ts">

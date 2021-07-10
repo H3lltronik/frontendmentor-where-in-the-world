@@ -1,5 +1,5 @@
-<div class="col-12 h-100">
-  <div class="row h-100 app-row">
+<div class="col-12">
+  <div class="row app-row">
     <Header/>
     <Body/>
   </div>
@@ -45,9 +45,11 @@
   }
 
   .app-row {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    flex-direction: column;
   }
 
   .elevation {
