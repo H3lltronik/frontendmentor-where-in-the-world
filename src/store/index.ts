@@ -17,6 +17,8 @@ export const countries = readable<Country.RootObject[]>([], (set) => {
 export const nameFilter = writable<string>("");
 export const regionFilter = writable<string>("All");
 
+export const currentTheme = writable<Theme|null>(null);
+
 export const filteredCountries = derived(
     [countries, regionFilter, nameFilter], 
     ([$countries, $regionFilter, $nameFilter]) => {

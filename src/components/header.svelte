@@ -1,17 +1,20 @@
-<header class="col-12 header">
+<header class="col-12 header elevation common-transition">
     <div class="row justify-content-center align-items-center h-100">
         <div class="content-container container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-auto">
-                    <h1>Where in the world?</h1>
+                    <h1 class="header_title">Where in the world?</h1>
                 </div>
 
                 <div class="col-auto">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center cursor-pointer" on:click={toggleTheme}>
                         <div class="me-2">
-                            <Icon path={ mdiWeatherNight }></Icon>
+                            <Icon path={ icon }></Icon>
                         </div>
-                        <span>Dark Mode</span>
+                        <div class="text-capitalize">
+                            <span>{$currentTheme} </span>
+                            <span>Mode</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,7 +30,7 @@
                     <Icon path={mdiMagnify}></Icon>
                 </div>
                 <input class="search" type="text" placeholder="Search for a country..." 
-                on:input={e => nameFilter.update (val => val = e.target.value)}
+                on:input={updateNameFilter}
                 >
             </div>
         </div>
@@ -40,27 +43,46 @@
 
 <script lang="ts">
     import Icon from 'mdi-svelte';
-    import { mdiMagnify, mdiWeatherNight  } from '@mdi/js';
+    import { onMount } from 'svelte';
+    import {nameFilter, currentTheme} from '../store'
+    import { mdiMagnify } from '@mdi/js';
     import FilterSelect from "./filterSelect.svelte";
-    import {nameFilter} from '../store'
+    import { switchTheme, toggleTheme, themeIcon } from '../utils';
+    let timeout = null;
+    let icon = null;
 
+    currentTheme.subscribe(() => { icon = themeIcon() })
+    
+    onMount (() => {switchTheme ('dark');})
+
+    const updateNameFilter = (e) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            nameFilter.update (val => val = e.target.value)
+        }, 500);
+    }
 </script>
 
 <style lang="scss">
     .header {
         height: 80px;
-        color: white;
+        color: var(--text-color);
         background-color: var(--header-color);
+        &_title {
+            font-size: 30px;
+        }
     }
 
     .search {
         border-radius: 5px;
         padding-left: 60px;
-        color: var(--text-color);
         width: 480px; height: 55px;
         outline: none; border: none;
         background-color: var(--header-color);
         &::placeholder {
+            color: var(--placeholder-color);
+        }
+        &_box, & {
             color: var(--text-color);
         }
         &_box {

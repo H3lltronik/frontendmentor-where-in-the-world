@@ -1,4 +1,4 @@
-<div class="position-relative">
+<div class="position-relative elevation common-transition">
     <div class="select" bind:this={select}>
         {#if $regionFilter}
             <span>{$regionFilter}</span> 
@@ -9,7 +9,7 @@
         <Icon path={mdiChevronDown }></Icon>
     </div>
     
-    <div class="select_items mt-2" bind:this={popover}>
+    <div class="select_items mt-2 elevation common-transition" bind:this={popover}>
         {#each regions as region}
             <div class="select_item" on:click={() => selectRegionFilter (region)}>{region}</div>
         {/each}
@@ -17,26 +17,30 @@
 </div>
 
 <script lang="ts">
+    import tippy from 'tippy.js';
     import Icon from 'mdi-svelte';
     import { onMount } from 'svelte';
+    import 'tippy.js/animations/shift-away.css';
     import { mdiChevronDown } from '@mdi/js';
     import {regions, regionFilter} from '../store'
-    import tippy from 'tippy.js';
 
     let popover = null;
     let select = null;
+    let tippyIntance = null;
 
     onMount(() => {
-        tippy (select, {
+        tippyIntance = tippy (select, {
             content: popover,
             placement: 'bottom',
     		trigger:'click',
+            animation: 'shift-away',
             interactive: true
         });
     });
 
     const selectRegionFilter = (regionFiler: string) => {
-        regionFilter.update(n => n = regionFiler)
+        regionFilter.update(n => n = regionFiler);
+        tippyIntance?.hide();
     }
 
 
@@ -47,6 +51,7 @@
         display: flex;
         padding: 0 15px;
         align-items: center;
+        color: var(--text-color);
         width: 200px; height: 55px;
         justify-content: space-between;
         &, &_items {
@@ -60,6 +65,7 @@
         &_item {
             cursor: pointer;
             padding: 0 25px;
+            color: var(--text-color);
             &:hover {
                 background-color: var(--hover-color);
             }
