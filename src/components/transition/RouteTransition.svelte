@@ -10,7 +10,7 @@
 </script>
 
 <div
-	class="route-wrapper"
+	class="route-wrapper w-100 h-100"
 	in:fly={{ x: x * directionFactor, duration }}
 	out:fly={{ x: -x * directionFactor, duration }}
 >
