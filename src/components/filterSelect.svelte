@@ -1,8 +1,8 @@
 <div class="position-relative elevation common-transition">
     <div id="region-filter" class="select" bind:this={select} on:keydown={e => handleKeydown(e.keyCode, 13, handleEnter)}
-        role="listbox" tabindex="0">
+        role="listbox" tabindex="0" aria-label="Filter by Region">
         {#if $regionFilter}
-            <span aria-label="region filter">{$regionFilter}</span> 
+            <div>{$regionFilter}</div> 
         {:else}
             <span>Filter by Region</span>
         {/if}
