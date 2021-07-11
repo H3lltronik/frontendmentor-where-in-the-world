@@ -13,7 +13,7 @@
          <div class="col-12">
              <div class="row mt-5 justify-content-around justify-content-xxl-between">
                  <div class="col-12 col-lg-5 col-xxl-5">
-                     <div class="country_flag">
+                     <div class="country_flag elevation">
                          <img class="" src={country?.flag} alt="flag">
                      </div>
                  </div>

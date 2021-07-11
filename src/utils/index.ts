@@ -37,3 +37,24 @@ export const themeIcon = () => {
 
     return icon;
 }
+
+export function paginate<T>(array: T[], page_size: number, page_number: number) {
+    return <T[]>array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
+export function observeForEndScroll (element: HTMLElement, {endElement, callback}) {
+    const onIntersection : IntersectionObserverCallback = 
+        function ([{isIntersecting, target}]) {
+            if (isIntersecting && callback) {
+                callback()
+            } 
+        };
+
+    const io = new IntersectionObserver(onIntersection, {
+        root: element,
+        threshold: 0,
+    })
+
+    io.observe(endElement)
+}
+  
