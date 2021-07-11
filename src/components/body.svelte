@@ -1,4 +1,4 @@
-<div class="col-12 body">
+<main class="col-12 body">
     <div class="row h-100">
         <div class="content-container container h-100" style="overflow-y: auto; overflow-x: hidden;">
             <Router>
@@ -23,7 +23,7 @@
             <BarLoader size="120" color="#212e37" unit="px" duration="1s"></BarLoader>
         </div>
     {/if}
-</div>
+</main>
 
 <script lang="ts">
     import {loading} from '../store'

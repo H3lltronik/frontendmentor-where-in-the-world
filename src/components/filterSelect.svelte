@@ -1,7 +1,8 @@
 <div class="position-relative elevation common-transition">
-    <div class="select" bind:this={select}>
+    <div id="region-filter" class="select" bind:this={select} on:keydown={e => handleKeydown(e.keyCode, 13, handleEnter)}
+        role="listbox" tabindex="0">
         {#if $regionFilter}
-            <span>{$regionFilter}</span> 
+            <span aria-label="region filter">{$regionFilter}</span> 
         {:else}
             <span>Filter by Region</span>
         {/if}
@@ -11,7 +12,10 @@
     
     <div class="select_items mt-2 elevation common-transition" bind:this={popover}>
         {#each regions as region}
-            <div class="select_item" on:click={() => selectRegionFilter (region)}>{region}</div>
+            <div class="select_item" on:click={() => selectRegionFilter (region)} on:keydown={e => handleKeydown(e.keyCode, 13, () => {selectRegionFilter (region)})}
+                tabindex="0">
+                    {region}
+            </div>
         {/each}
     </div>
 </div>
@@ -23,6 +27,7 @@
     import 'tippy.js/animations/shift-away.css';
     import { mdiChevronDown } from '@mdi/js';
     import {regions, regionFilter} from '../store'
+    import {handleKeydown} from '../utils'
 
     let popover = null;
     let select = null;
@@ -41,6 +46,10 @@
     const selectRegionFilter = (regionFiler: string) => {
         regionFilter.update(n => n = regionFiler);
         tippyIntance?.hide();
+    }
+
+    const handleEnter = () => {
+        tippyIntance?.show();
     }
 
 

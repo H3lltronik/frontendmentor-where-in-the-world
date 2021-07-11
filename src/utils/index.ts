@@ -57,4 +57,7 @@ export function observeForEndScroll (element: HTMLElement, {endElement, callback
 
     io.observe(endElement)
 }
-  
+
+export const handleKeydown = (key, wanted, callback) => {
+    if (key == wanted && callback) callback();
+}

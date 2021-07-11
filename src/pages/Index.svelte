@@ -6,7 +6,7 @@
                     <Icon path={mdiMagnify}></Icon>
                 </div>
                 <input class="search" type="text" placeholder="Search for a country..." 
-                on:input={updateNameFilter}
+                on:input={updateNameFilter} aria-label="Search for a country..."
                 >
             </div>
         </div>
