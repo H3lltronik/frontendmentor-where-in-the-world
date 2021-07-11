@@ -16,7 +16,7 @@
         </div>
     </div>
     
-    <div bind:this={mainScroll} class="row  mt-4 countries">
+    <div bind:this={mainScroll} class="row pt-4 mt-4 countries">
         <div class="position-relative col-12">
             <div class="row gy-5">
                 {#each $paginatedFilteredCountries as country, index}
